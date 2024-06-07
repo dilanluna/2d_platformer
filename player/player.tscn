@@ -1,0 +1,260 @@
+[gd_scene load_steps=21 format=3 uid="uid://dojobgnu460r6"]
+
+[ext_resource type="Script" path="res://player/movement.gd" id="1_0sofg"]
+[ext_resource type="Texture2D" uid="uid://b780h48n0oy1n" path="res://player/sprites/virtual_boy.png" id="1_xmp8k"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2xjmk"]
+height = 28.0
+
+[sub_resource type="Animation" id="Animation_f4kvs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [36]
+}
+
+[sub_resource type="Animation" id="Animation_iexo5"]
+resource_name = "double_jump"
+length = 0.25
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_5hcty"]
+resource_name = "fall"
+length = 0.001
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+
+[sub_resource type="Animation" id="Animation_dfjcb"]
+resource_name = "hit"
+length = 0.3
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [24, 25, 26, 27, 28, 29, 30]
+}
+
+[sub_resource type="Animation" id="Animation_65xii"]
+resource_name = "idle"
+length = 0.5
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46]
+}
+
+[sub_resource type="Animation" id="Animation_vqqds"]
+resource_name = "jump"
+length = 0.001
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [48]
+}
+
+[sub_resource type="Animation" id="Animation_tpj66"]
+resource_name = "run"
+length = 0.55
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71]
+}
+
+[sub_resource type="Animation" id="Animation_akv7v"]
+resource_name = "wall_jump"
+length = 0.2
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [72, 73, 74, 75, 76]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8d7qw"]
+_data = {
+"RESET": SubResource("Animation_f4kvs"),
+"double_jump": SubResource("Animation_iexo5"),
+"fall": SubResource("Animation_5hcty"),
+"hit": SubResource("Animation_dfjcb"),
+"idle": SubResource("Animation_65xii"),
+"jump": SubResource("Animation_vqqds"),
+"run": SubResource("Animation_tpj66"),
+"wall_jump": SubResource("Animation_akv7v")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ds5ql"]
+animation = &"fall"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ioasp"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b7vif"]
+animation = &"jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e4xse"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f3tbc"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vdh7b"]
+advance_mode = 2
+advance_condition = &"is_moving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_utsof"]
+advance_mode = 2
+advance_condition = &"is_idle"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_gx33s"]
+states/fall/node = SubResource("AnimationNodeAnimation_ds5ql")
+states/fall/position = Vector2(400, 176.71)
+states/idle/node = SubResource("AnimationNodeAnimation_ioasp")
+states/idle/position = Vector2(320, 100)
+states/jump/node = SubResource("AnimationNodeAnimation_b7vif")
+states/jump/position = Vector2(400, 21.7098)
+states/run/node = SubResource("AnimationNodeAnimation_e4xse")
+states/run/position = Vector2(467, 100)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_f3tbc"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_vdh7b"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_utsof")]
+graph_offset = Vector2(0, -36.2902)
+
+[node name="Player" type="Node2D"]
+position = Vector2(256, 144)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+platform_floor_layers = 4294967293
+script = ExtResource("1_0sofg")
+move_speed = 200.0
+jump_speed = 350.0
+wall_slide_gravity_scale = 0.35
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_2xjmk")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("1_xmp8k")
+hframes = 12
+vframes = 7
+frame = 36
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_8d7qw")
+}
+autoplay = "idle"
+
+[node name="AnimationTree" type="AnimationTree" parent="CharacterBody2D"]
+active = false
+root_node = NodePath("../Sprite2D")
+tree_root = SubResource("AnimationNodeStateMachine_gx33s")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/is_idle = false
+parameters/conditions/is_moving = false
+
+[node name="CoyoteTimer" type="Timer" parent="CharacterBody2D"]
+wait_time = 0.08
+one_shot = true
+
+[node name="WallCheck" type="Node2D" parent="CharacterBody2D"]
+
+[node name="TopRayCast" type="RayCast2D" parent="CharacterBody2D/WallCheck"]
+position = Vector2(0, -12)
+target_position = Vector2(14, 0)
+
+[node name="MidRayCast" type="RayCast2D" parent="CharacterBody2D/WallCheck"]
+target_position = Vector2(14, 0)
+
+[node name="BottomRayCast" type="RayCast2D" parent="CharacterBody2D/WallCheck"]
+position = Vector2(0, 12)
+target_position = Vector2(14, 0)
+
+[node name="GroundCheck" type="Node2D" parent="CharacterBody2D"]
+
+[node name="LeftRayCast" type="RayCast2D" parent="CharacterBody2D/GroundCheck"]
+position = Vector2(-10, 0)
+target_position = Vector2(0, 18)
+
+[node name="MidRayCast" type="RayCast2D" parent="CharacterBody2D/GroundCheck"]
+target_position = Vector2(0, 18)
+
+[node name="RightRayCast" type="RayCast2D" parent="CharacterBody2D/GroundCheck"]
+position = Vector2(10, 0)
+target_position = Vector2(0, 18)

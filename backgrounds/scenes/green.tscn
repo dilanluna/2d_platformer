@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://e8xa08autm4d"]
+
+[ext_resource type="Script" path="res://backgrounds/background_movement.gd" id="1_laqxk"]
+[ext_resource type="Texture2D" uid="uid://bwimvuikgdn7h" path="res://backgrounds/sprites/green.png" id="2_apjmg"]
+
+[node name="Green" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("1_laqxk")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(0, 512)
+
+[node name="Polygon2D" type="Polygon2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_repeat = 2
+position = Vector2(256, 0)
+scale = Vector2(8, 8)
+texture = ExtResource("2_apjmg")
+texture_scale = Vector2(8, 8)
+polygon = PackedVector2Array(32, 32, -32, 32, -32, -32, 32, -32)
+uv = PackedVector2Array(64, 64, 0, 64, 0, 0, 64, 0)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
